@@ -1,6 +1,5 @@
 require 'travis/topaz/version'
 require 'travis/support/logger'
-require 'thread'
 
 module Travis
   module Topaz
@@ -25,7 +24,7 @@ module Travis
       end
 
       def update(event_data)
-        queue.push(event_data) if queue.num_waiting < 100
+        queue.push(event_data) if queue && queue.num_waiting < 100
       end
     end
   end
