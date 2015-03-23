@@ -1,6 +1,8 @@
 # Travis::Topaz
 
-TODO: Write a gem description
+travis-topaz is a gem for posting event info to Travis-Topaz web app.
+
+It should not be confused with the travis-topaz web app itself, which can be found here https://github.com/travis-pro/travis-topaz
 
 ## Installation
 
@@ -22,10 +24,3 @@ Or install it yourself as:
 
 TODO: Write usage instructions here
 
-## Contributing
-
-1. Fork it ( https://github.com/[my-github-username]/travis-topaz/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
