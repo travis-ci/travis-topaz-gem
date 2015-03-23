@@ -1,5 +1,6 @@
 require 'travis/topaz/version'
 require 'travis/support/logger'
+require 'thread'
 
 module Travis
   module Topaz

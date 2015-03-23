@@ -6,9 +6,9 @@ require 'travis/topaz/version'
 Gem::Specification.new do |spec|
   spec.name          = "travis-topaz"
   spec.version       = Travis::Topaz::VERSION
-  spec.authors          = ['Travis CI GmbH']
-  spec.email            = ['contact+travis-topaz-gem@travis-ci.com']
-  spec.license          = 'All Rights Reserved'
+  spec.authors       = ['Travis CI GmbH']
+  spec.email         = ['contact+travis-topaz-gem@travis-ci.com']
+  spec.license       = 'All Rights Reserved'
   spec.summary       = %q{Gem for posting event info to Travis-Topaz web app.}
   spec.description   = %q{The Travis-Topaz web app is an internal customer event-tracking insight tool.}
   spec.homepage      = "https://github.com/travis-pro/travis-topaz-gem"
@@ -28,4 +28,3 @@ Gem::Specification.new do |spec|
   # Disallow pushing to rubygems
   spec.metadata['allowed_push_host'] = 'https://nonexistent-host.example.com' if spec.respond_to?(:metadata)
 end
-
