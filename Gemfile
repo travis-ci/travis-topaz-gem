@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 gem 'travis-support',  git: 'git://github.com/travis-ci/travis-support'
 
 group :test do
+  gem 'faraday'
   gem 'rake', '~> 10.0'
-  gem 'rspec', '~> 2.8.0'
+  gem 'rspec'
   gem 'webmock'
 end
