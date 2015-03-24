@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+RSpec::Mocks.configuration.syntax = :should
+
 describe Travis::Topaz do
   before do
     Travis::Topaz.setup
@@ -14,15 +16,14 @@ describe Travis::Topaz do
       end
     end
 
-    # context 'Queue has 100 or more waiting updates' do
-    #   before do
-    #     Travis::Topaz.queue.stubs(:num_waiting).returns(101)
-    #   end
-    #   it 'does not post request topaz app' do
-    #     expect(a_request(:post, "https://travis-pro-topaz-staging.herokuapp.com/new_event").to not_have_been_made.once)
-    #     Travis::Topaz.update(event_data)
-    #   end
-    #   # expect event_data to NOT be posted to the url if queue.num_waiting => 100
-    # end
+    context 'Queue has 100 or more waiting updates' do
+      before do
+        Travis::Topaz.queue.stub(:num_waiting).and_return(101)
+      end
+      it 'does not post request topaz app' do
+        Travis::Topaz.update(event_data)
+        expect(a_request(:post, "https://travis-pro-topaz-staging.herokuapp.com/new_event")).not_to have_been_made
+      end
+    end
   end
 end
