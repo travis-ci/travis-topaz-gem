@@ -22,7 +22,7 @@ describe Travis::Topaz do
       end
       it 'does not post request topaz app' do
         Travis::Topaz.update(event_data)
-        expect(a_request(:post, "https://travis-pro-topaz-staging.herokuapp.com/new_event")).not_to have_been_made
+        expect(a_request(:post, "https://travis-pro-topaz-staging.herokuapp.com/event/new")).not_to have_been_made
       end
     end
   end
