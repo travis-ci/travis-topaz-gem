@@ -14,7 +14,7 @@ module Travis
           loop do
             begin
               event = queue.pop
-              conn.post 'https://travis-pro-topaz-staging.herokuapp.com/new_event', event
+              conn.post 'https://travis-pro-topaz-staging.herokuapp.com/event/new', event
               Travis.logger.info("A post request has been added to the queue with the following data: #{event}")
             rescue => e
               Travis.logger.info([e.message, e.backtrace].flatten.join("\n"))

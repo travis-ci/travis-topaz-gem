@@ -12,7 +12,7 @@ describe Travis::Topaz do
     context 'Queue has less than 100 waiting updates' do
       it 'sends post request to topaz app' do
         Travis::Topaz.update(event_data)
-        expect(a_request(:post, "https://travis-pro-topaz-staging.herokuapp.com/new_event")).to have_been_made.once
+        expect(a_request(:post, "https://travis-pro-topaz-staging.herokuapp.com/event/new")).to have_been_made.once
       end
     end
 
