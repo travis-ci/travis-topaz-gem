@@ -6,7 +6,7 @@ module Travis
     class << self
       attr_accessor :queue
 
-      def setup
+      def setup(url)
         @queue = ::SizedQueue.new(100)
         conn = Faraday.new
 
@@ -14,7 +14,7 @@ module Travis
           loop do
             begin
               event = queue.pop
-              conn.post 'https://travis-pro-topaz-staging.herokuapp.com/events/new', event
+              conn.post url + '/events/new', event
               Travis.logger.info("A post request has been added to the queue with the following data: #{event}")
             rescue => e
               Travis.logger.info([e.message, e.backtrace].flatten.join("\n"))
