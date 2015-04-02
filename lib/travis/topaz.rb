@@ -14,7 +14,7 @@ module Travis
           loop do
             begin
               event = queue.pop
-              conn.post url + '/events/new', event
+              conn.post url + '/event/new', event
               Travis.logger.info("A post request has been added to the queue with the following data: #{event}")
             rescue => e
               Travis.logger.info([e.message, e.backtrace].flatten.join("\n"))
