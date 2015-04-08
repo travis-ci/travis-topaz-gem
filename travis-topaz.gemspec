@@ -6,12 +6,11 @@ require 'travis/topaz/version'
 Gem::Specification.new do |spec|
   spec.name          = "travis-topaz"
   spec.version       = Travis::Topaz::VERSION
-  spec.authors       = ['Travis CI GmbH']
-  spec.email         = ['contact+travis-topaz-gem@travis-ci.com']
-  spec.license       = 'All Rights Reserved'
+  spec.authors       = ['Carla Drago']
+  spec.email         = ['contact+travis-topaz-gem@travis-ci.org']
   spec.summary       = %q{Gem for posting event info to Travis-Topaz web app.}
   spec.description   = %q{The Travis-Topaz web app is an internal customer event-tracking insight tool.}
-  spec.homepage      = "https://github.com/travis-pro/travis-topaz-gem"
+  spec.homepage      = "https://github.com/travis-ci/travis-topaz-gem"
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
