@@ -7,6 +7,9 @@ module Travis
       attr_accessor :queue
 
       def setup(url)
+        puts
+        puts caller
+        puts
         Travis.logger.info("Setting up Topaz")
         @queue = ::SizedQueue.new(100)
         Travis.logger.info("Topaz Queue created")
