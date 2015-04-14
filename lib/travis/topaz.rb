@@ -17,8 +17,9 @@ module Travis
           loop do
             begin
               event = queue.pop
+              Travis.logger.info("Topaz Event popped from queue")
               conn.post url + '/event/new', event
-              Travis.logger.info("A post request has been added to the queue with the following data: #{event}")
+              Travis.logger.info("A post request has been sent with the following data: #{event}")
             rescue => e
               Travis.logger.info([e.message, e.backtrace].flatten.join("\n"))
             end
@@ -28,7 +29,7 @@ module Travis
 
       def update(event)
         queue.push(event) if queue && queue.num_waiting < 100
-        Travis.logger.info("Topaz Event added to queue")
+        Travis.logger.info("Topaz Event pushed to queue")
       end
     end
   end
