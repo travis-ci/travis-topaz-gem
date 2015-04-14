@@ -7,14 +7,10 @@ module Travis
       attr_accessor :queue
 
       def setup(url)
-        puts
-        puts caller
-        puts
+        return if @queue
         Travis.logger.info("Setting up Topaz")
         @queue = ::SizedQueue.new(100)
-        Travis.logger.info("Topaz Queue created")
         conn = Faraday.new
-        Travis.logger.info("Topaz Faraday connection created")
 
         Thread.new do
           loop do
@@ -34,7 +30,6 @@ module Travis
         return unless queue && queue.num_waiting < 100
         Travis.logger.info("Pushing Topaz Event to queue")
         queue.push(event)
-        Travis.logger.info("Topaz Event pushed to queue. Queue size is now #{queue.num_waiting}")
       end
     end
   end
