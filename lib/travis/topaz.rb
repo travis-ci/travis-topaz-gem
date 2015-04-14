@@ -29,8 +29,9 @@ module Travis
 
       def update(event)
         return unless queue && queue.num_waiting < 100
-        Travis.logger.info("Topaz Event pushed to queue")
+        Travis.logger.info("Pushing Topaz Event to queue")
         queue.push(event)
+        Travis.logger.info("Topaz Event pushed to queue. Queue size is now #{queue.num_waiting}")
       end
     end
   end
