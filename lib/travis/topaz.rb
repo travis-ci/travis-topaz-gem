@@ -29,7 +29,7 @@ module Travis
 
       def update(event)
         return unless queue && queue.num_waiting < 100
-        Travis.logger.info("Topaz Event added to queue")
+        Travis.logger.info("Topaz Event pushed to queue")
         queue.push(event)
       end
     end
