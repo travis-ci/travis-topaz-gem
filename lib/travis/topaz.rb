@@ -1,5 +1,6 @@
 require 'travis/topaz/version'
 require 'travis/support/logger'
+require 'faraday'
 
 module Travis
   module Topaz
@@ -11,6 +12,7 @@ module Travis
         Travis.logger.info("Setting up Topaz")
         @queue = ::SizedQueue.new(100)
         conn = Faraday.new
+        Travis.logger.info("Faraday connection created")
 
         Thread.new do
           loop do
