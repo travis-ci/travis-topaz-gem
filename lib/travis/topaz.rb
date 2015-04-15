@@ -12,8 +12,9 @@ module Travis
         begin
           Travis.logger.info("Setting up Topaz")
           @queue = ::SizedQueue.new(100)
+          Travis.logger.info("Topaz SizedQueue created")
           conn = Faraday.new
-          Travis.logger.info("Faraday connection created")
+          Travis.logger.info("Topaz Faraday connection created")
         rescue => e
           Travis.logger.info([e.message, e.backtrace].flatten.join("\n"))
         end
