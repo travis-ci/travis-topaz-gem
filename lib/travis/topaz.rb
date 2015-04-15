@@ -9,15 +9,11 @@ module Travis
 
       def setup(url)
         return if @queue
-        begin
-          Travis.logger.info("Setting up Topaz")
-          @queue = ::SizedQueue.new(100)
-          Travis.logger.info("Topaz SizedQueue created")
-          conn = Faraday.new
-          Travis.logger.info("Topaz Faraday connection created")
-        rescue => e
-          Travis.logger.info([e.message, e.backtrace].flatten.join("\n"))
-        end
+        Travis.logger.info("Setting up Topaz")
+        @queue = ::SizedQueue.new(100)
+        Travis.logger.info("Topaz SizedQueue created")
+        conn = Faraday.new
+        Travis.logger.info("Topaz Faraday connection created")
 
         Thread.new do
           loop do
@@ -31,12 +27,16 @@ module Travis
             end
           end
         end
+      rescue => e
+        Travis.logger.info([e.message, e.backtrace].flatten.join("\n"))
       end
 
       def update(event)
         return unless queue && queue.num_waiting < 100
         Travis.logger.info("Pushing Topaz Event to queue")
         queue.push(event)
+      rescue => e
+        Travis.logger.info([e.message, e.backtrace].flatten.join("\n"))
       end
     end
   end
