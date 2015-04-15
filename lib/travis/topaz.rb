@@ -9,10 +9,14 @@ module Travis
 
       def setup(url)
         return if @queue
-        Travis.logger.info("Setting up Topaz")
-        @queue = ::SizedQueue.new(100)
-        conn = Faraday.new
-        Travis.logger.info("Faraday connection created")
+        begin
+          Travis.logger.info("Setting up Topaz")
+          @queue = ::SizedQueue.new(100)
+          conn = Faraday.new
+          Travis.logger.info("Faraday connection created")
+        rescue => e
+          Travis.logger.info([e.message, e.backtrace].flatten.join("\n"))
+        end
 
         Thread.new do
           loop do
