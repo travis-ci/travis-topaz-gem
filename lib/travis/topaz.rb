@@ -33,7 +33,7 @@ module Travis
 
       def update(event)
         return unless queue && queue.num_waiting < 100
-        Travis.logger.info("Pushing Topaz Event to queue")
+        Travis.logger.info("Pushing Topaz Event to queue: #{event}")
         queue.push(event)
       rescue => e
         Travis.logger.info([e.message, e.backtrace].flatten.join("\n"))
