@@ -7,6 +7,11 @@ module Travis
     attr_accessor :queue
 
     def initialize(url, logger = Logger.new($stdout))
+      unless url
+        @logger.info("No Topaz URL present")
+        return
+      end
+      
       @url = url
       @logger = logger
       @logger.info("Setting up Topaz")
