@@ -4,14 +4,14 @@ require 'faraday'
 
 module Travis
   class Topaz
-    attr_accessor :queue
+    attr_accessor :queue, :logger
 
     def initialize(url, logger = Logger.new($stdout))
       unless url
         @logger.info("No Topaz URL present")
         return
       end
-      
+
       @url = url
       @logger = logger
       @logger.info("Setting up Topaz")
