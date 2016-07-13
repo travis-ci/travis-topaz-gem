@@ -1,8 +1,7 @@
 require 'travis/topaz/version'
 require 'logger'
 require 'faraday'
-# require 'net/http'
-require 'httparty'
+require 'net/http'
 
 module Travis
   class Topaz
@@ -45,8 +44,7 @@ module Travis
     end
 
     def provided_builds_for(owner_id)
-      result = HTTParty.get(@url + "/provided_builds/#{owner_id}")
-      # result = Net::HTTP.get(URI.parse(@url), "/provided_builds/#{owner_id}")
+      result = Net::HTTP.get(URI.parse(@url), "/provided_builds/#{owner_id}")
       result
     rescue => e
       @logger.info([e.message, e.backtrace].flatten.join("\n"))
