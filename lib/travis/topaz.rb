@@ -50,8 +50,6 @@ module Travis
         http.request(request)
       }
       result.body
-      # result = Net::HTTP.get(URI.parse(@url), "/provided_builds/#{owner_id}")
-      # result
     rescue => e
       @logger.info([e.message, e.backtrace].flatten.join("\n"))
     end
