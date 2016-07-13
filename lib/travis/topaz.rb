@@ -44,8 +44,14 @@ module Travis
     end
 
     def provided_builds_for(owner_id)
-      result = Net::HTTP.get(URI.parse(@url), "/provided_builds/#{owner_id}")
-      result
+      url = URI.parse(@url + "/provided_builds/#{owner_id}")
+      request = Net::HTTP::Get.new(url.to_s)
+      result  = Net::HTTP.start(url.host, url.port) {|http|
+        http.request(request)
+      }
+      result.body
+      # result = Net::HTTP.get(URI.parse(@url), "/provided_builds/#{owner_id}")
+      # result
     rescue => e
       @logger.info([e.message, e.backtrace].flatten.join("\n"))
     end
