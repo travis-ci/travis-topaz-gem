@@ -43,8 +43,8 @@ module Travis
       @logger.info([e.message, e.backtrace].flatten.join("\n"))
     end
 
-    def provided_builds_for(owner.id)
-      result = Net::HTTP.get(URI.parse(@url), "/provided_builds/#{owner.id}")
+    def provided_builds_for(owner_id)
+      result = Net::HTTP.get(URI.parse(@url), "/provided_builds/#{owner_id}")
     rescue => e
       @logger.info([e.message, e.backtrace].flatten.join("\n"))
     end
