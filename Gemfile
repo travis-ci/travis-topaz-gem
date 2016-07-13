@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # Specify your gem's dependencies in travis-topaz.gemspec
 gem 'faraday'
+gem 'httparty'
 
 group :test do
   gem 'faraday'
