@@ -43,8 +43,8 @@ module Travis
       @logger.info([e.message, e.backtrace].flatten.join("\n"))
     end
 
-    def provided_builds_for(owner_id)
-      url = @url + "/provided_builds/#{owner_id}"
+    def builds_provided_for(owner_id)
+      url = @url + "/builds_provided/#{owner_id}"
       response = open(url).read
     rescue => e
       @logger.info([e.message, e.backtrace].flatten.join("\n"))
